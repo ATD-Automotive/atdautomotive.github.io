@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATD Automotive — Japanese &amp; Korean Vehicle Specialists</title>
+  <meta name="description" content="ATD Automotive — Specialising in Japanese and Korean vehicles. Fully qualified, 20 years experience, fully insured. Mobile repair and breakdown services available.">
+
+  <!-- Favicon (swap this file when you have a logo) -->
+  <!-- <link rel="icon" href="favicon.ico"> -->
+
+  <!-- Google Fonts — bold industrial feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== COLOUR PALETTE — edit these to restyle the whole site ===== */
+    :root {
+      --bg-dark:    #1c1c1c;
+      --bg-card:    #252525;
+      --red:        #d42b2b;
+      --red-hover:  #b51f1f;
+      --white:      #f5f5f5;
+      --grey:       #b0b0b0;
+      --font-heading: 'Oswald', sans-serif;
+      --font-body:    'Open Sans', sans-serif;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-dark);
+      color: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ===== UTILITY ===== */
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.3em;
+    }
+
+    .accent { color: var(--red); }
+
+    .section-divider {
+      width: 60px;
+      height: 4px;
+      background: var(--red);
+      border: none;
+      margin-bottom: 2rem;
+    }
+
+    /* ===== HEADER / NAV ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(28, 28, 28, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--red);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.6rem;
+    }
+
+    .nav-links a {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--grey);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus { color: var(--red); }
+
+    .nav-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      padding: 0.5rem 1.1rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    .nav-call:hover,
+    .nav-call:focus { background: var(--red-hover); }
+
+    /* Hamburger (mobile) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 5rem 0 4rem;
+      text-align: center;
+      background:
+        linear-gradient(180deg, rgba(28,28,28,0.6) 0%, var(--bg-dark) 100%),
+        radial-gradient(ellipse at 50% 0%, rgba(212,43,43,0.15) 0%, transparent 70%);
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 8vw, 4.2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero .tagline {
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      color: var(--grey);
+      margin-bottom: 1.6rem;
+    }
+
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 2rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+
+    .badge svg { flex-shrink: 0; }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 4vw, 1.6rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.9rem 2.2rem;
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .hero-cta:hover,
+    .hero-cta:focus {
+      background: var(--red-hover);
+      transform: scale(1.03);
+    }
+
+    .hero-mobile {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--grey);
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      padding: 4rem 0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .service-group {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 2rem 1.8rem;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .service-group h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.2rem;
+      color: var(--red);
+    }
+
+    .service-group li {
+      position: relative;
+      padding: 0.55rem 0 0.55rem 1.4rem;
+      font-size: 1rem;
+      color: var(--white);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .service-group li:last-child { border-bottom: none; }
+
+    .service-group li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      background: var(--red);
+      border-radius: 2px;
+    }
+
+    /* ===== ABOUT BLURB (mobile services callout) ===== */
+    .about {
+      padding: 3rem 0 4rem;
+    }
+
+    .about-card {
+      background: var(--bg-card);
+      border-left: 4px solid var(--red);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+
+    .about-card p {
+      font-size: 1.05rem;
+      color: var(--grey);
+      line-height: 1.7;
+    }
+
+    .about-card strong { color: var(--white); }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      padding: 4rem 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+
+    .contact-item svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .contact-item a {
+      color: var(--white);
+      transition: color 0.2s;
+    }
+
+    .contact-item a:hover { color: var(--red); }
+
+    .contact-item .label {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--grey);
+      margin-bottom: 0.15rem;
+    }
+
+    .contact-item .value {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+    }
+
+    .js-reveal-phone.revealed { cursor: pointer; }
+
+    .map-wrapper {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.08);
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 2px solid var(--red);
+      padding: 1.8rem 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--grey);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 700px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid  { grid-template-columns: 1fr 1fr; }
+      .map-wrapper iframe { height: 100%; min-height: 320px; }
+    }
+
+    @media (max-width: 699px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-dark);
+        border-bottom: 2px solid var(--red);
+        padding: 1rem 5%;
+        gap: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER — sticky nav with phone CTA
+       ============================================================ -->
+  <header>
+    <nav class="nav container">
+      <div class="nav-logo">ATD <span class="accent">Automotive</span></div>
+
+      <button class="hamburger" aria-label="Open menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <a href="#" class="nav-call js-reveal-phone" aria-label="Reveal phone number to call">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="js-phone-text">Tap to reveal &amp; call</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       HERO — name, tagline, trust signals, call-to-action
+       ============================================================ -->
+  <section class="hero">
+    <div class="container">
+      <h1>ATD <span class="accent">Automotive</span></h1>
+      <p class="tagline">Specialising in Japanese &amp; Korean Vehicles</p>
+
+      <div class="trust-badges">
+        <span class="badge">
+          <svg width="18" height="18" fill="none" stroke="var(--red)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Fully Qualified
+        </span>
+        <span class="badge">
+          <svg width="18" height="18" fill="none" stroke="var(--red)" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          20 Years Experience
+        </span>
+        <span class="badge">
+          <svg width="18" height="18" fill="none" stroke="var(--red)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Fully Insured
+        </span>
+      </div>
+
+      <a href="#" class="hero-cta js-reveal-phone" aria-label="Reveal phone number to call">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="js-phone-text">Tap to reveal &amp; call</span>
+      </a>
+      <span class="hero-mobile">Tap to call — mobile repair &amp; breakdown services available</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES — two groups matching the flyer layout
+       ============================================================ -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title">Our <span class="accent">Services</span></h2>
+      <hr class="section-divider">
+
+      <div class="services-grid">
+
+        <!-- Group 1: Mechanical -->
+        <div class="service-group">
+          <h3>Mechanical</h3>
+          <ul>
+            <li>General Servicing</li>
+            <li>WOF Repairs</li>
+            <li>Pre-Purchase Inspection</li>
+            <li>Brake &amp; Clutch Repairs</li>
+            <li>Transmission Service</li>
+          </ul>
+        </div>
+
+        <!-- Group 2: Electrical & Diagnostics -->
+        <div class="service-group">
+          <h3>Electrical &amp; Diagnostics</h3>
+          <ul>
+            <li>Diagnostics — Latest Scanning Technology</li>
+            <li>Cooling System Diagnostics &amp; Repair</li>
+            <li>Auto Electrical, Battery &amp; Charging Systems</li>
+            <li>Air Conditioning Diagnostics &amp; Re-gassing</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT — mobile repair callout
+       ============================================================ -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title">Why <span class="accent">ATD</span>?</h2>
+      <hr class="section-divider">
+      <div class="about-card">
+        <p>
+          With <strong>over 20 years of hands-on experience</strong>, ATD Automotive
+          delivers reliable, honest servicing and repairs for Japanese and Korean vehicles.
+          We're <strong>fully qualified and fully insured</strong>, so you can trust
+          your vehicle is in safe hands. Need us to come to you?
+          We offer <strong>mobile repair and breakdown services</strong> — just give us a call.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT — phone, email, map (location pin only; no street number in text)
+       ============================================================ -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="section-title">Get in <span class="accent">Touch</span></h2>
+      <hr class="section-divider">
+
+      <div class="contact-grid">
+
+        <div class="contact-info">
+
+          <!-- Phone (obscured until clicked) -->
+          <div class="contact-item">
+            <svg width="22" height="22" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="#" class="js-reveal-phone" aria-label="Reveal phone number to call">
+              <span class="label">Phone</span>
+              <span class="value js-phone-text">Tap to reveal &amp; call</span>
+            </a>
+          </div>
+
+          <!-- Email -->
+          <div class="contact-item">
+            <svg width="22" height="22" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:Atdmobileautomotive@outlook.com">
+              <span class="label">Email</span>
+              <span class="value">Atdmobileautomotive@outlook.com</span>
+            </a>
+          </div>
+
+          <div class="contact-item">
+            <svg width="22" height="22" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <span class="label">Location</span>
+              <span class="value">Ferndale — by appointment only</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Map: pin at location via coordinates (no street address in page source) -->
+        <div class="map-wrapper">
+          <iframe
+            src="https://maps.google.com/maps?q=-36.8841,174.6362&z=16&ie=UTF8&iwloc=&output=embed"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="ATD Automotive — Ferndale (by appointment)">
+          </iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="year"></span> ATD Automotive. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function () {
+      var p = ['027', '515', '1399'];
+      var tel = p.join('');
+      var display = p.join(' ');
+      document.querySelectorAll('.js-reveal-phone').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          if (el.classList.contains('revealed')) return;
+          e.preventDefault();
+          el.classList.add('revealed');
+          el.href = 'tel:' + tel;
+          var text = el.querySelector('.js-phone-text');
+          if (text) text.textContent = display;
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
