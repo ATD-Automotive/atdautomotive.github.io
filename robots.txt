@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://atd-automotive.github.io/atdautomotive.github.io/sitemap.xml

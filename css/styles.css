@@ -1,0 +1,363 @@
+/* ATD Mobile Automotive — main styles. Edit :root to restyle colours/fonts. */
+
+:root {
+  --bg-dark:    #1c1c1c;
+  --bg-card:    #252525;
+  --red:        #d42b2b;
+  --red-hover:  #b51f1f;
+  --white:      #f5f5f5;
+  --grey:       #b0b0b0;
+  --font-heading: 'Oswald', sans-serif;
+  --font-body:    'Open Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-dark);
+  color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3em;
+}
+
+.accent { color: var(--red); }
+
+.section-divider {
+  width: 60px;
+  height: 4px;
+  background: var(--red);
+  border: none;
+  margin-bottom: 2rem;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(28, 28, 28, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid var(--red);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+}
+
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.nav-links a {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--grey);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a:focus { color: var(--red); }
+
+.nav-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.nav-call:hover,
+.nav-call:focus { background: var(--red-hover); }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.hero {
+  padding: 5rem 0 4rem;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(28,28,28,0.6) 0%, var(--bg-dark) 100%),
+    radial-gradient(ellipse at 50% 0%, rgba(212,43,43,0.15) 0%, transparent 70%);
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 8vw, 4.2rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+
+.hero .tagline {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  color: var(--grey);
+  margin-bottom: 1.6rem;
+}
+
+.trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 2rem;
+  margin-bottom: 2.2rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--white);
+}
+
+.badge svg { flex-shrink: 0; }
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.9rem 2.2rem;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.hero-cta:hover,
+.hero-cta:focus {
+  background: var(--red-hover);
+  transform: scale(1.03);
+}
+
+.hero-mobile {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--grey);
+}
+
+.services {
+  padding: 4rem 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.service-group {
+  background: var(--bg-card);
+  border-radius: 8px;
+  padding: 2rem 1.8rem;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.service-group h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.2rem;
+  color: var(--red);
+}
+
+.service-group li {
+  position: relative;
+  padding: 0.55rem 0 0.55rem 1.4rem;
+  font-size: 1rem;
+  color: var(--white);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.service-group li:last-child { border-bottom: none; }
+
+.service-group li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--red);
+  border-radius: 2px;
+}
+
+.about {
+  padding: 3rem 0 4rem;
+}
+
+.about-card {
+  background: var(--bg-card);
+  border-left: 4px solid var(--red);
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.about-card p {
+  font-size: 1.05rem;
+  color: var(--grey);
+  line-height: 1.7;
+}
+
+.about-card strong { color: var(--white); }
+
+.contact {
+  padding: 4rem 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.contact-item svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact-item a {
+  color: var(--white);
+  transition: color 0.2s;
+}
+
+.contact-item a:hover { color: var(--red); }
+
+.contact-item .label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--grey);
+  margin-bottom: 0.15rem;
+}
+
+.contact-item .value {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+}
+
+.js-reveal-phone.revealed { cursor: pointer; }
+
+.map-wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.08);
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+}
+
+footer {
+  border-top: 2px solid var(--red);
+  padding: 1.8rem 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--grey);
+}
+
+@media (min-width: 700px) {
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid  { grid-template-columns: 1fr 1fr; }
+  .map-wrapper iframe { height: 100%; min-height: 320px; }
+}
+
+@media (max-width: 699px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg-dark);
+    border-bottom: 2px solid var(--red);
+    padding: 1rem 5%;
+    gap: 0.8rem;
+  }
+}
