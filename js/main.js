@@ -1,12 +1,55 @@
-/* ATD Mobile Automotive — footer year + tap-to-reveal phone + Google reviews loader. */
+/* ATD Mobile Automotive — footer year, nav, tap-to-call, map embed, reviews. */
 
-document.getElementById('year').textContent = new Date().getFullYear();
-
-/* Tap-to-reveal phone. Edit phone parts in the array below. */
 (function () {
-  var p = ['027', '515', '1399'];
-  var tel = p.join('');
-  var display = p.join(' ');
+  'use strict';
+
+  var cfg = window.ATD_CONFIG || {};
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  initNav();
+  initPhone(cfg.phone);
+  initMap(cfg.placeId, cfg.mapsApiKey);
+  initReviews(cfg.placeId, cfg.mapsApiKey, cfg.reviewsCacheKey);
+})();
+
+function initNav() {
+  var btn = document.querySelector('.hamburger');
+  var links = document.getElementById('nav-links');
+  if (!btn || !links) return;
+
+  function setOpen(open) {
+    links.classList.toggle('open', open);
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  btn.addEventListener('click', function () {
+    setOpen(!links.classList.contains('open'));
+  });
+
+  links.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () { setOpen(false); });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setOpen(false);
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!links.classList.contains('open')) return;
+    if (btn.contains(e.target) || links.contains(e.target)) return;
+    setOpen(false);
+  });
+}
+
+function initPhone(parts) {
+  if (!Array.isArray(parts) || parts.length !== 3) return;
+
+  var tel = parts.join('');
+  var display = parts.join(' ');
+
   document.querySelectorAll('.js-reveal-phone').forEach(function (el) {
     el.addEventListener('click', function (e) {
       if (el.classList.contains('revealed')) return;
@@ -17,22 +60,22 @@ document.getElementById('year').textContent = new Date().getFullYear();
       if (text) text.textContent = display;
     });
   });
-})();
+}
 
-/* Reviews loader. Fetches from the Places API and renders cards into
-   #reviews. Section stays hidden if the fetch fails. Cached in
-   localStorage for 24h — bump CACHE_KEY when the response shape or
-   rendering changes. Place ID + API key come from data attributes on
-   the section. */
-(function () {
+function initMap(placeId, apiKey) {
+  var iframe = document.querySelector('.js-map-embed');
+  if (!iframe || !placeId || !apiKey) return;
+
+  iframe.src = 'https://www.google.com/maps/embed/v1/place?key=' +
+    encodeURIComponent(apiKey) +
+    '&q=place_id:' + encodeURIComponent(placeId);
+}
+
+function initReviews(placeId, apiKey, cacheKey) {
   var section = document.getElementById('reviews');
-  if (!section) return;
+  if (!section || !placeId || !apiKey) return;
 
-  var PLACE_ID = section.dataset.placeId;
-  var API_KEY = section.dataset.apiKey;
-  if (!PLACE_ID || !API_KEY) return;
-
-  var CACHE_KEY = 'atd-reviews-v1';
+  var CACHE_KEY = cacheKey || 'atd-reviews-v2';
   var CACHE_TTL_MS = 24 * 60 * 60 * 1000;
   var MAX_CARDS = 4;
 
@@ -42,10 +85,10 @@ document.getElementById('year').textContent = new Date().getFullYear();
     return;
   }
 
-  fetch('https://places.googleapis.com/v1/places/' + encodeURIComponent(PLACE_ID), {
+  fetch('https://places.googleapis.com/v1/places/' + encodeURIComponent(placeId), {
     method: 'GET',
     headers: {
-      'X-Goog-Api-Key': API_KEY,
+      'X-Goog-Api-Key': apiKey,
       'X-Goog-FieldMask': 'id,displayName,rating,userRatingCount,reviews'
     }
   })
@@ -57,8 +100,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
       writeCache(data);
       render(data);
     })
-    .catch(function (err) {
-      console.warn('Reviews load failed:', err);
+    .catch(function () {
+      /* Section stays hidden on failure */
     });
 
   function render(data) {
@@ -72,7 +115,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
     if (countEl) countEl.textContent = count + (count === 1 ? ' review' : ' reviews');
 
     var grid = section.querySelector('.js-reviews-grid');
-    grid.innerHTML = '';
+    grid.replaceChildren();
     var visible = data.reviews
       .filter(function (r) { return r && r.text && r.text.text; })
       .slice(0, MAX_CARDS);
@@ -120,7 +163,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
   function renderStars(n) {
     var rounded = Math.max(0, Math.min(5, Math.round(n)));
-    return '★'.repeat(rounded) + '☆'.repeat(5 - rounded);
+    return '\u2605'.repeat(rounded) + '\u2606'.repeat(5 - rounded);
   }
 
   function readCache() {
@@ -146,4 +189,4 @@ document.getElementById('year').textContent = new Date().getFullYear();
       /* storage full or disabled — non-fatal */
     }
   }
-})();
+}

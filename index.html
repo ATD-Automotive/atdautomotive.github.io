@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-NZ">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://places.googleapis.com; frame-src https://www.google.com; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests">
   <title>Mobile Mechanic New Plymouth | ATD Mobile Automotive</title>
   <meta name="description" content="Mobile mechanic in New Plymouth offering servicing, WOF repairs, brakes and diagnostics for Japanese &amp; Korean vehicles. We come to you, or visit our Ferndale workshop. Fully qualified, 20 years experience, fully insured. By appointment.">
+  <meta name="theme-color" content="#1c1c1c">
 
   <link rel="canonical" href="https://atdautomotive.co.nz/">
   <link rel="alternate" hreflang="en-NZ" href="https://atdautomotive.co.nz/">
   <link rel="alternate" hreflang="x-default" href="https://atdautomotive.co.nz/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
   <meta name="geo.region" content="NZ">
   <meta name="geo.placename" content="Ferndale, New Plymouth">
@@ -41,7 +45,10 @@
       "addressCountry": "NZ"
     },
     "geo": { "@type": "GeoCoordinates", "latitude": -39.084441, "longitude": 174.0639329 },
-    "openingHoursSpecification": { "@type": "OpeningHoursSpecification", "description": "By appointment only" }
+    "openingHoursSpecification": { "@type": "OpeningHoursSpecification", "description": "By appointment only" },
+    "sameAs": [
+      "https://maps.app.goo.gl/zso6AKWNFVbojLbM6"
+    ]
   }
   </script>
 
@@ -51,10 +58,9 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Structure: index.html (this file) = content. css/styles.css = colours & layout. js/main.js = year, tap-to-call, reviews loader. -->
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- SVG icon sprite. Referenced below via <svg><use href="#icon-xxx"/></svg>. Edit a path here once; every instance updates. -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <svg class="svg-sprite" width="0" height="0" aria-hidden="true">
     <defs>
       <symbol id="icon-phone" viewBox="0 0 24 24">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -81,18 +87,18 @@
     </defs>
   </svg>
 
-  <!-- Header: nav + phone CTA -->
   <header>
-    <nav class="nav container">
+    <nav class="nav container" aria-label="Main">
       <div class="nav-logo">ATD Mobile <span class="accent">Automotive</span></div>
 
-      <button class="hamburger" aria-label="Open menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
 
-      <div class="nav-links">
+      <div class="nav-links" id="nav-links">
         <a href="#services">Services</a>
         <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
         <a href="#contact">Contact</a>
       </div>
 
@@ -103,167 +109,151 @@
     </nav>
   </header>
 
-  <!-- Hero: name, tagline, trust badges, call button -->
-  <section class="hero">
-    <div class="container">
-      <h1>ATD Mobile <span class="accent">Automotive</span></h1>
-      <p class="tagline">Mobile Mechanic • New Plymouth, Bell Block, Inglewood &amp; Oakura • Specialising in Japanese &amp; Korean vehicles</p>
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <h1>ATD Mobile <span class="accent">Automotive</span></h1>
+        <p class="tagline">Mobile Mechanic • New Plymouth, Bell Block, Inglewood &amp; Oakura • Specialising in Japanese &amp; Korean vehicles</p>
 
-      <div class="trust-badges">
-        <span class="badge">
-          <svg width="18" height="18" fill="none" stroke="var(--red)" stroke-width="2" aria-hidden="true"><use href="#icon-shield"/></svg>
-          Fully Qualified
-        </span>
-        <span class="badge">
-          <svg width="18" height="18" fill="none" stroke="var(--red)" stroke-width="2" aria-hidden="true"><use href="#icon-clock"/></svg>
-          20 Years Experience
-        </span>
-        <span class="badge">
-          <svg width="18" height="18" fill="none" stroke="var(--red)" stroke-width="2" aria-hidden="true"><use href="#icon-shield-check"/></svg>
-          Fully Insured
-        </span>
-      </div>
-
-      <a href="#" class="hero-cta js-reveal-phone" aria-label="Reveal phone number to call">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-phone"/></svg>
-        <span class="js-phone-text">Tap to call</span>
-      </a>
-      <span class="hero-mobile">Workshop in Ferndale, New Plymouth, or we come to you across New Plymouth, Bell Block, Inglewood &amp; Oakura. By appointment.</span>
-    </div>
-  </section>
-
-  <!-- Services: mechanical + electrical/diagnostics -->
-  <section class="services" id="services">
-    <div class="container">
-      <h2 class="section-title">Our <span class="accent">Services</span></h2>
-      <hr class="section-divider">
-
-      <div class="services-grid">
-
-        <!-- Group 1: Mechanical -->
-        <div class="service-group">
-          <h3>Mechanical</h3>
-          <ul>
-            <li>General car servicing &amp; oil change</li>
-            <li>WOF pre-check &amp; repairs</li>
-            <li>Pre-purchase inspections</li>
-            <li>Brake pad, rotor &amp; clutch repairs</li>
-            <li>Cambelt / timing belt replacement</li>
-            <li>Transmission service</li>
-          </ul>
+        <div class="trust-badges">
+          <span class="badge">
+            <svg width="18" height="18" fill="none" stroke="var(--red)" stroke-width="2" aria-hidden="true"><use href="#icon-shield"/></svg>
+            Fully Qualified
+          </span>
+          <span class="badge">
+            <svg width="18" height="18" fill="none" stroke="var(--red)" stroke-width="2" aria-hidden="true"><use href="#icon-clock"/></svg>
+            20 Years Experience
+          </span>
+          <span class="badge">
+            <svg width="18" height="18" fill="none" stroke="var(--red)" stroke-width="2" aria-hidden="true"><use href="#icon-shield-check"/></svg>
+            Fully Insured
+          </span>
         </div>
 
-        <!-- Group 2: Electrical & Diagnostics -->
-        <div class="service-group">
-          <h3>Electrical &amp; Diagnostics</h3>
-          <ul>
-            <li>Diagnostics with latest scanning technology</li>
-            <li>Cooling system diagnostics &amp; repair</li>
-            <li>Auto electrical, battery testing &amp; charging systems</li>
-            <li>Air conditioning re-gas &amp; repair</li>
-          </ul>
+        <a href="#" class="hero-cta js-reveal-phone" aria-label="Reveal phone number to call">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-phone"/></svg>
+          <span class="js-phone-text">Tap to call</span>
+        </a>
+        <p class="hero-mobile">Workshop in Ferndale, New Plymouth, or we come to you across New Plymouth, Bell Block, Inglewood &amp; Oakura. By appointment.</p>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <h2 class="section-title">Our <span class="accent">Services</span></h2>
+        <hr class="section-divider">
+
+        <div class="services-grid">
+          <div class="service-group">
+            <h3>Mechanical</h3>
+            <ul>
+              <li>General car servicing &amp; oil change</li>
+              <li>WOF pre-check &amp; repairs</li>
+              <li>Pre-purchase inspections</li>
+              <li>Brake pad, rotor &amp; clutch repairs</li>
+              <li>Cambelt / timing belt replacement</li>
+              <li>Transmission service</li>
+            </ul>
+          </div>
+
+          <div class="service-group">
+            <h3>Electrical &amp; Diagnostics</h3>
+            <ul>
+              <li>Diagnostics with latest scanning technology</li>
+              <li>Cooling system diagnostics &amp; repair</li>
+              <li>Auto electrical, battery testing &amp; charging systems</li>
+              <li>Air conditioning re-gas &amp; repair</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container">
+        <h2 class="section-title">Why <span class="accent">ATD Mobile Automotive</span>?</h2>
+        <hr class="section-divider">
+        <div class="about-card">
+          <p>
+            With <strong>over 20 years of hands-on experience</strong>, ATD Mobile Automotive
+            is a <strong>mobile mechanic in New Plymouth</strong>, specialising in Japanese
+            and Korean vehicles like Toyota, Mazda, Honda, Nissan, Subaru, Mitsubishi, Hyundai
+            and Kia. We're <strong>fully qualified and fully insured</strong>. We bring
+            our tools to you across <strong>New Plymouth, Bell Block, Inglewood and Oakura</strong>,
+            and we also have a <strong>workshop in Ferndale, New Plymouth</strong>.
+            Whichever suits you, <strong>by appointment</strong>. Give us a call.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="reviews" hidden>
+      <div class="container">
+        <h2 class="section-title">What customers <span class="accent">say</span></h2>
+        <hr class="section-divider">
+
+        <div class="reviews-summary">
+          <span class="reviews-rating">
+            <strong class="js-reviews-rating">—</strong>
+            <span class="reviews-rating-stars" aria-hidden="true">★★★★★</span>
+            <span class="reviews-rating-count js-reviews-count">— reviews</span>
+          </span>
+          <span class="reviews-attribution">Reviews from Google</span>
         </div>
 
+        <div class="reviews-grid js-reviews-grid"></div>
+
+        <a class="reviews-cta" href="https://maps.app.goo.gl/zso6AKWNFVbojLbM6" target="_blank" rel="noopener noreferrer">
+          See all reviews on Google
+        </a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About: workshop + mobile -->
-  <section class="about" id="about">
-    <div class="container">
-      <h2 class="section-title">Why <span class="accent">ATD Mobile Automotive</span>?</h2>
-      <hr class="section-divider">
-      <div class="about-card">
-        <p>
-          With <strong>over 20 years of hands-on experience</strong>, ATD Mobile Automotive
-          is a <strong>mobile mechanic in New Plymouth</strong>, specialising in Japanese
-          and Korean vehicles like Toyota, Mazda, Honda, Nissan, Subaru, Mitsubishi, Hyundai
-          and Kia. We're <strong>fully qualified and fully insured</strong>. We bring
-          our tools to you across <strong>New Plymouth, Bell Block, Inglewood and Oakura</strong>,
-          and we also have a <strong>workshop in Ferndale, New Plymouth</strong>.
-          Whichever suits you, <strong>by appointment</strong>. Give us a call.
-        </p>
-      </div>
-    </div>
-  </section>
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="section-title">Get in <span class="accent">Touch</span></h2>
+        <hr class="section-divider">
 
-  <!-- Reviews: loaded from the Google Places API by js/main.js. Hidden until data arrives; stays hidden if the fetch fails. Config (place ID + key) in the data attributes below. -->
-  <section class="reviews" id="reviews" hidden
-           data-place-id="ChIJoSBHldVPFG0RV7nQM3F27Jo"
-           data-api-key="AIzaSyCuef4wl_PbFr3yzpoFHh0L9Km1HrQPf4w">
-    <div class="container">
-      <h2 class="section-title">What customers <span class="accent">say</span></h2>
-      <hr class="section-divider">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="contact-item">
+              <svg width="22" height="22" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-phone"/></svg>
+              <a href="#" class="js-reveal-phone" aria-label="Reveal phone number to call">
+                <span class="label">Phone</span>
+                <span class="value js-phone-text">Tap to call</span>
+              </a>
+            </div>
 
-      <div class="reviews-summary">
-        <span class="reviews-rating">
-          <strong class="js-reviews-rating">—</strong>
-          <span class="reviews-rating-stars" aria-hidden="true">★★★★★</span>
-          <span class="reviews-rating-count js-reviews-count">— reviews</span>
-        </span>
-        <span class="reviews-attribution">Reviews from Google</span>
-      </div>
+            <div class="contact-item">
+              <svg width="22" height="22" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-mail"/></svg>
+              <a href="mailto:info@atdautomotive.co.nz">
+                <span class="label">Email</span>
+                <span class="value">info@atdautomotive.co.nz</span>
+              </a>
+            </div>
 
-      <div class="reviews-grid js-reviews-grid"></div>
-
-      <a class="reviews-cta" href="https://search.google.com/local/reviews?placeid=ChIJoSBHldVPFG0RV7nQM3F27Jo" target="_blank" rel="noopener">
-        See all reviews on Google
-      </a>
-    </div>
-  </section>
-
-  <!-- Contact: phone, email, location text, map -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <h2 class="section-title">Get in <span class="accent">Touch</span></h2>
-      <hr class="section-divider">
-
-      <div class="contact-grid">
-
-        <div class="contact-info">
-
-          <!-- Phone: tap to reveal then call -->
-          <div class="contact-item">
-            <svg width="22" height="22" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-phone"/></svg>
-            <a href="#" class="js-reveal-phone" aria-label="Reveal phone number to call">
-              <span class="label">Phone</span>
-              <span class="value js-phone-text">Tap to call</span>
-            </a>
-          </div>
-
-          <!-- Email -->
-          <div class="contact-item">
-            <svg width="22" height="22" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-mail"/></svg>
-            <a href="mailto:info@atdautomotive.co.nz">
-              <span class="label">Email</span>
-              <span class="value">info@atdautomotive.co.nz</span>
-            </a>
-          </div>
-
-          <div class="contact-item">
-            <svg width="22" height="22" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-pin"/></svg>
-            <div>
-              <span class="label">Workshop &amp; mobile</span>
-              <span class="value">Workshop in Ferndale, New Plymouth. We also come to you across New Plymouth, Bell Block, Inglewood &amp; Oakura, both by appointment.</span>
+            <div class="contact-item">
+              <svg width="22" height="22" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-pin"/></svg>
+              <div>
+                <span class="label">Workshop &amp; mobile</span>
+                <span class="value">Workshop in Ferndale, New Plymouth. We also come to you across New Plymouth, Bell Block, Inglewood &amp; Oakura, both by appointment.</span>
+              </div>
             </div>
           </div>
 
+          <div class="map-wrapper">
+            <iframe
+              class="js-map-embed"
+              title="ATD Mobile Automotive on Google Maps: workshop in Ferndale, New Plymouth. Includes star rating and customer reviews."
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
-
-        <!-- Map: GBP listing card via Maps Embed API. API key is referrer-restricted in Google Cloud, so safe in source. -->
-        <div class="map-wrapper">
-          <iframe
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCuef4wl_PbFr3yzpoFHh0L9Km1HrQPf4w&q=place_id:ChIJoSBHldVPFG0RV7nQM3F27Jo"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="ATD Mobile Automotive on Google Maps: workshop in Ferndale, New Plymouth. Includes star rating and customer reviews.">
-          </iframe>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer>
     <div class="container">
@@ -271,6 +261,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

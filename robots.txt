@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /comments/
+Disallow: /feed/
+Disallow: /wp-admin/
+Disallow: /wp-json/
+Disallow: /wp-content/
+Disallow: /wp-includes/
+Disallow: /xmlrpc.php
 
 Sitemap: https://atdautomotive.co.nz/sitemap.xml

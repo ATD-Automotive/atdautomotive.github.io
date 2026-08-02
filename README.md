@@ -20,7 +20,8 @@ This repo is **public** (anyone can see it). Only the **owner** or **admin** (or
 2. **Files to edit:**
    - **`index.html`** — all visible text (name, tagline, services, about, contact, meta tags, JSON-LD). Start here for copy changes.
    - **`css/styles.css`** — colours (top `:root` block), fonts, spacing, layout. Edit to change look.
-   - **`js/main.js`** — phone number (the `['027', '515', '1399']` array) and tap-to-call behaviour.
+   - **`js/config.js`** — phone number (the `['027', '515', '1399']` array), Google Place ID, and Maps API key (referrer-restricted in Google Cloud Console).
+   - **`js/main.js`** — tap-to-call behaviour, mobile nav, map embed, and reviews loader.
 3. GitHub Pages serves everything from the repo root; the site works with these relative paths. Don’t move or rename `index.html`, `css/`, or `js/` unless you update the links.
 
 ### 2. View the live site
@@ -38,7 +39,7 @@ Open this repo in [Cursor](https://cursor.com) (or clone it and open the folder)
 **Option C — Edit directly on GitHub**  
 Click the file you need, then the **pencil icon**. Use **Ctrl+F** / **Cmd+F** to find text:
 - **index.html**: Email (`info@atdautomotive.co.nz`), location text (`Ferndale`), tagline, services, about copy.
-- **js/main.js**: Phone number — edit the array `['027', '515', '1399']`.
+- **js/config.js**: Phone number — edit the array `['027', '515', '1399']`. Google Place ID and API key also live here.
 - **css/styles.css**: Colours — edit the `:root` block at the top.  
 Then add a commit message and click **Commit changes**.
 
